@@ -39,9 +39,26 @@ directory:
 - `srtio3_hse_exx/` only: `hf_exchange_spin_01_kpt_NNNNNN.csc` -- the raw
   ELSI-CSC k-resolved exact-exchange matrices (`output hf_exchange_mat`)
   that `add_exact_exchange` reads
-- `srtio3_pbe/` only: `band1NNN.out` -- FHI-aims' own band-structure dump
-  along the path in `control.in`, used in the notebook to cross-check
-  sisl's own band structure
+- `srtio3_pbe/` and `srtio3_hse_exx/` only: `band1NNN.out` -- FHI-aims' own
+  band-structure dump along the path in `control.in`. The one in
+  `srtio3_pbe/` is used in `notebooks/02_srtio3_bands_crosscheck.ipynb` to
+  cross-check sisl's own band structure; the one in `srtio3_hse_exx/` is
+  included for completeness (same kind of file) but not currently read by
+  any notebook -- `03_srtio3_hse_exx_gap.ipynb` compares semi-local vs.
+  hybrid eigenvalues directly, not against this dump.
+
+## Notebooks
+
+Each notebook is real, executed output against the real fixtures above (not
+a mockup) -- plots and printed numbers are baked in, so they can be read
+without re-running anything, and re-run to regenerate if the reader ever
+changes.
+
+| Notebook | What it shows |
+|---|---|
+| `01_cu_bulk_bands.ipynb` | Band structure of bulk Cu along the standard FCC path -- the textbook narrow 3d manifold crossed by a free-electron-like 4s band. Sanity check, no external cross-check available for this system. |
+| `02_srtio3_bands_crosscheck.ipynb` | The strongest validation here: sisl's band structure overlaid directly on FHI-aims' *own* independently-computed band dump along the same path. Agreement is ~1e-6 eV near the Fermi level and ~1e-3 eV even for the deepest core levels (~-16000 eV) -- this checks the physics in the reconstructed H/S, not just that the reader runs. |
+| `03_srtio3_hse_exx_gap.ipynb` | Semi-local vs. hybrid (HSE06 + exact exchange) eigenvalues at the 8 SCF k-points of a real hybrid-functional run, showing the expected gap-opening effect of exact exchange -- demonstrates the real-orbital-basis and hybrid-EXX features composing correctly. |
 
 ## Using these fixtures directly
 
