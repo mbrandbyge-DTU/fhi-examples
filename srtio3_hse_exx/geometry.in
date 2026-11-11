@@ -1,0 +1,9 @@
+# Cubic SrTiO3 perovskite, a = 3.905 Ang
+lattice_vector 3.905 0.000 0.000
+lattice_vector 0.000 3.905 0.000
+lattice_vector 0.000 0.000 3.905
+atom_frac 0.0 0.0 0.0 Sr
+atom_frac 0.5 0.5 0.5 Ti
+atom_frac 0.5 0.5 0.0 O
+atom_frac 0.5 0.0 0.5 O
+atom_frac 0.0 0.5 0.5 O
